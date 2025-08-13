@@ -18,7 +18,7 @@ The goal was to unify tools, reduce dependencies, and bring full control of the 
 
 ## Example Workflow Diagram
 
-```mermaid
+<div class="mermaid">
 %%{init: {'theme':'base', 'flowchart': {'layout': 'elk'}}}%%
 flowchart LR
     A(["XML Source Files in Git"]) -- "DITA-OT Markdown Export" --> B["Markdown Files"]
@@ -27,7 +27,7 @@ flowchart LR
     C2(["Docs metadata in JSON"]) -- "script to inject meta to HTMLs" --> D
     D -- Deploy --> E["Object Storage Bucket"]
     E -- CDN Distribution --> F["End Users"]
-```
+</div>
 
 Two approaches were considered:
 
