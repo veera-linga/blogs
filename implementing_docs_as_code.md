@@ -99,10 +99,3 @@ pandoc --from=markdown --to=rst --output=output.rst input.md
 * [DITA Open Toolkit Parameters](https://www.dita-ot.org/dev/parameters/parameters-html5#html5)
 * [Pandoc](https://pandoc.org/)
 * [Sphinx Documentation](https://www.sphinx-doc.org/)
-
-```html
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-```
