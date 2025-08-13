@@ -1,5 +1,4 @@
-# Implementing Docs as Code to the Fullest Extent
-
+# Implementing Docs as Code
 ## Background
 
 Our documentation system previously relied on a **commercial XML source control, authoring, and publishing suites**.  
