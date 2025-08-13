@@ -18,7 +18,7 @@ The goal was to unify tools, reduce dependencies, and bring full control of the 
 
 ## Example Workflow Diagram
 
-```mermaid
+<pre> ```mermaid
 ---
 config:
   layout: elk
@@ -31,7 +31,7 @@ flowchart LR
     C2(["Docs metadata in JSON"]) -- "script to inject meta to HTMLs" --> D
     D -- Deploy --> E["Object Storage Bucket"]
     E -- CDN Distribution --> F["End Users"]
-```
+``` </pre>
 
 Two approaches were considered:
 
@@ -103,4 +103,9 @@ pandoc --from=markdown --to=rst --output=output.rst input.md
 * [DITA Open Toolkit Parameters](https://www.dita-ot.org/dev/parameters/parameters-html5#html5)
 * [Pandoc](https://pandoc.org/)
 * [Sphinx Documentation](https://www.sphinx-doc.org/)
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
 
