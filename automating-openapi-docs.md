@@ -46,7 +46,7 @@ This automated approach ensures that our API documentation remains consistently 
 %%{init: {'theme':'base', 'flowchart': {'layout': 'elk'}}}%%
 flowchart LR
   A["API Changes in Source Code (Dev Branch)"]
-  A --> B{"Optional Validation in Source Repo (Redocly Build on every commit)"}
+  A --> B{"Optional Validation in Source Repo</br>(Redocly Build on Every Commit)"}
   B --> C["Scheduled Job (Every 12 Hours)"]
   B --> J["Email Notification to Writing Team (Commit Errors)"]
   C --> D["Fetch OpenAPI Spec into Docs Repo"]
