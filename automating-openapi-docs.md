@@ -7,7 +7,7 @@ Maintaining up-to-date API documentation can be a significant challenge in fast-
 Our initial approach to API documentation was largely manual and prone to inconsistencies. Developers were responsible for updating the OpenAPI specification whenever changes were made to the codebase. This often involved:
 
 1.  **Manual Updates:** Developers would modify the OpenAPI specification files (typically YAML or JSON) and commit them to reflect API changes.
-2.  **Lack of Validation:** There was no documentation validation in place, which meant developers were not sure that their commits would break the API documentation build process.
+2.  **Lack of Validation:** There was no documentation validation in place, which meant developers had no way of knowing if their commits would break the API documentation build.
 3.  **Language Review:** Writers manually reviewed the summaries and descriptions added to the API specification in the source YAML files.
 4.  **Manual Publishing:** Once a release branch was finalized, writers would manually upload the source files to the documentation repository and deploy them to the API documentation portal.
 
@@ -17,13 +17,15 @@ This process was time-consuming, error-prone, and often resulted in documentatio
 
 \<div class="mermaid"\>
 %%{init: {'theme':'base', 'flowchart': {'layout': 'elk'}}}%%
-flowchart TD
-A["API Changes in Source Code"] --\> B{Update OpenAPI Spec?};
-B -- Yes --\> C["Commit and Push YAML/JSON Files"];
-C --\> D{"Writers Review"};
-D -- Pass --\> E["Finalize Release Branch"];
-E --\> F["Manual Upload and Deploy to Docs Repo"];
-B -- No --\> G["Documentation Becomes Outdated"];
+flowchart LR
+  A["Update OpenAPI Spec in Source Code"]
+  A --> C["Commit & Push YAML/JSON Files"]
+  C --> D["Writer Review"]
+  D --> F["Manual Upload to Docs Repo"]
+  F --> G{HTML Render Errors?}
+  G -- Yes --> H["Troubleshoot Errors"]
+  G -- No --> I["Deploy API Documentation"]
+  H --> I
 \</div\>
 
 ## Automated OpenAPI Documentation Process
@@ -42,14 +44,17 @@ This automated approach ensures that our API documentation remains consistently 
 
 \<div class="mermaid"\>
 %%{init: {'theme':'base', 'flowchart': {'layout': 'elk'}}}%%
-flowchart TD
-A["API Changes in Source Code (Dev Branch)"] --\> B{Scheduled Process (Every 12 Hours)};
-B --\> C["Fetch OpenAPI Spec from Source Repo"];
-C --\> D{Validate Spec and Build Docs (Redocly)};
-D -- Pass --\> E["Publish Docs to Portal"];
-E --\> F["Send Email Notification (Success)"];
-D -- Fail --\> G["Generate Error Report"];
-G --\> H["Send Email Notification (Failure)"];
+flowchart LR
+  A["API Changes in Source Code (Dev Branch)"]
+  A --> B{"Optional Validation in Source Repo (Redocly Build on every commit)"}
+  B --> C["Scheduled Job (Every 12 Hours)"]
+  B --> J["Email Notification to Writing Team (Commit Errors)"]
+  C --> D["Fetch OpenAPI Spec into Docs Repo"]
+  D --> E{"Render HTMLs (Redocly)"}
+  E -- Pass --> F["Publish Docs to Portal"]
+  F --> G["Email Notification (Success)"]
+  E -- Fail --> H["Generate Error Report"]
+  H --> I["Email Notification (Failure)"]
 \</div\>
 
 ## Benefits of the Automated Workflow
