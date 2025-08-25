@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
-    <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
   </head>
   <body>
     <div class="container">
@@ -13,10 +14,10 @@
       <!-- Header -->
       <header class="site-header">
         <div class="author-info">
-          <img src="{{ page.image }}" class="author-image">
+          <img src="{{ '/assets/images/profile-img-veera.jpg' | relative_url }}" class="author-image">
           <div class="author-details">
-            <p class="author-name">{{ page.author }}</p>
-            <p class="publish-date">{{ page.date }}</p>
+            <p class="author-name">Author : {{ page.author }}</p>
+            <p class="publish-date">Published on : {{ page.date }}</p>
           </div>
         </div>
       </header>
