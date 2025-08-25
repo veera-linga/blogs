@@ -13,7 +13,7 @@
       <!-- Header -->
       <header class="site-header">
         <div class="author-info">
-          <img src="{{ page.author_image }}" alt="{{ page.author }}" class="author-image">
+          <img src="{{ page.image }}" alt="{{ page.author }}" class="author-image">
           <div class="author-details">
             <p class="author-name">{{ page.author }}</p>
             <p class="publish-date">{{ page.date }}</p>
@@ -33,10 +33,5 @@
       </footer>
 
     </div>
-
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
-    </script>
   </body>
 </html>
