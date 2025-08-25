@@ -1,0 +1,40 @@
+/* Header */
+.site-header {
+  background-color: #222;   /* dark background */
+  color: #f5f5f5;           /* light text */
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #333;   /* slightly lighter dark */
+  color: #ddd;              /* lighter gray text */
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Author card */
+.author-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.author-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-info {
+  font-size: 0.9rem;
+  color: #333;
+}
