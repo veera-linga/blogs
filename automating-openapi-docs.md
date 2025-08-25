@@ -22,9 +22,9 @@ flowchart LR
   A --> C["Commit & Push YAML/JSON Files"]
   C --> D["Writer Review"]
   D --> F["Manual Upload to Docs Repo"]
-  F --> G{HTML Render Errors?}
-  G -- Yes --> H["Troubleshoot Errors"]
-  G -- No --> I["Deploy API Documentation"]
+  F --> G{Render HTMLs (Redocly)}
+  G -- Fail --> H["Troubleshoot Errors"]
+  G -- Pass --> I["Deploy API Documentation"]
   H --> I
 </div>
 
