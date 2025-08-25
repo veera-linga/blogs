@@ -1,3 +1,11 @@
+---
+layout: blog
+title: Automating OpenAPI Documentation Generation
+author: Veera Linga
+author_image: /assets/images/profile-img-veera.jpg
+date: AUG-2025
+---
+
 # Automating OpenAPI Documentation Generation
 
 Maintaining up-to-date API documentation can be a significant challenge in fast-paced development environments, particularly for staging environments. Outdated or inaccurate API documentation can lead to confusion, integration issues, and increased development/testing time for API consumers. Recognizing this pain point, an automated workflow for generating and publishing OpenAPI documentation we implemented, significantly improving the reliability and timeliness of our API information. This blog details the previous manual process and the enhanced automated system.
