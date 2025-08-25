@@ -1,9 +1,7 @@
 ---
-layout: default
-title: Automating OpenAPI Documentation Generation
-author: Veera Linga
-author_image: /assets/images/profile-img-veera.jpg
-date: AUG-2025
+author: "Veera Linga"
+date: "AUG-2025"
+image: "/assets/images/profile-img-veera.jpg"
 ---
 
 # Automating OpenAPI Documentation Generation
