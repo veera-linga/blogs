@@ -10,48 +10,6 @@
   </head>
   <body>
     <div class="container">
-      <div class="blog-banner" style="
-          background-color: #f0f0f0;
-          padding: 20px;
-          text-align: center;
-          border-radius: 8px;
-          font-family: Arial, sans-serif;
-          margin-bottom: 30px;
-      ">
-          <h1 style="
-              font-size: 2.5em;
-              color: #333;
-              margin-top: 0;
-              margin-bottom: 10px;
-          ">{{ page.title }}</h1>
-          
-          <div class="author-info" style="
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: 15px;
-              margin-top: 15px;
-          ">
-              <img src="{{ page.author_image }}" alt="{{ page.author }}'s Photo" style="
-                  width: 60px;
-                  height: 60px;
-                  border-radius: 50%;
-                  border: 2px solid #ccc;
-              ">
-              <div class="author-details" style="text-align: left;">
-                  <p style="
-                      margin: 0;
-                      font-size: 1.1em;
-                      font-weight: bold;
-                      color: #555;
-                  ">By {{ page.author }}</p>
-                  <p style="
-                      margin: 0;
-                      font-size: 0.9em;
-                      color: #777;
-                  ">Published on {{ page.date }}</p>
-              </div>
-          </div>
       </div>
       
       {{ content }}
