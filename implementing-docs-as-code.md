@@ -1,3 +1,9 @@
+---
+author: "Veera Linga"
+date: "AUG-2025"
+image: "/assets/images/profile-img-veera.jpg"
+---
+
 # Implementing Docs as Code
 ## Background
 
