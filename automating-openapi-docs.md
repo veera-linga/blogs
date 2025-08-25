@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: default
 title: Automating OpenAPI Documentation Generation
 author: Veera Linga
 author_image: /assets/images/profile-img-veera.jpg
