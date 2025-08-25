@@ -6,12 +6,88 @@
     <title>{{ page.title }}</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
-    
-    </head>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      /* Header */
+      .site-header {
+        background-color: #222; /* dark background */
+        color: #f5f5f5;         /* light text */
+        padding: 1rem;
+      }
+
+      .author-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .author-info img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* circular image */
+        object-fit: cover;
+      }
+
+      .author-meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .author-meta .author-name {
+        font-weight: bold;
+      }
+
+      .author-meta .date {
+        font-size: 0.85rem;
+        color: #ccc; /* slightly muted */
+      }
+
+      /* Content */
+      .container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      /* Footer */
+      .site-footer {
+        background-color: #111; /* darker footer */
+        color: #ddd;            /* lighter text */
+        padding: 1rem;
+        border-top: 2px solid #444; /* border only */
+      }
+    </style>
+  </head>
   <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="author-info">
+        <img src="{{ page.author_image }}" alt="{{ page.author }}">
+        <div class="author-meta">
+          <span class="author-name">{{ page.author }}</span>
+          <span class="date">{{ page.date }}</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
     <div class="container">
       {{ content }}
     </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <!-- Empty for now, just border -->
+      </div>
+    </footer>
 
     <script type="module">
       import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
