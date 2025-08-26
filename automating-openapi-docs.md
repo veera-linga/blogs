@@ -1,5 +1,6 @@
 ---
-author: "Veera Linga (veera.author@gmail.com)"
+author: "Veera Linga"
+linkedin_profile: "https://www.linkedin.com/in/from8990"
 date: "AUG-2025"
 ---
 
