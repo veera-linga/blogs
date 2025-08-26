@@ -49,7 +49,7 @@
 .linkedin-icon a {
   font-size: 18px;
   display: inline-block;
-  color: #0077B5; /* The LinkedIn blue color */
+  color: #fff; /* The LinkedIn white color */
 }
 
 .linkedin-icon a:hover {
