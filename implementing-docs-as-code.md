@@ -1,7 +1,6 @@
 ---
-author: "Veera Linga"
+author: "Veera Linga (veera.author@gmail.com)"
 date: "AUG-2025"
-image: "/assets/images/profile-img-veera.jpg"
 ---
 
 # Implementing Docs as Code
