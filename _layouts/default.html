@@ -14,9 +14,15 @@
       <!-- Header -->
       <header class="site-header">
         <div class="author-info">
-          <img src="{{ '/assets/images/profile-img-veera.jpg' | relative_url }}" class="author-image">
           <div class="author-details">
             <p class="author-name">Author : {{ page.author }}</p>
+           {% if page.linkedin_profile %}
+      <p class="linkedin-link">
+        <a href="{{ page.linkedin_profile }}" target="_blank" rel="noopener noreferrer">
+          LinkedIn Profile
+        </a>
+      </p>
+      {% endif %}
             <p class="publish-date">Published on : {{ page.date }}</p>
           </div>
         </div>
