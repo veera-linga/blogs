@@ -46,14 +46,12 @@
   text-align: center;
   border-top: 1px solid #444;
 }
-
-.blog-banner .linkedin-link a {
+.linkedin-icon a {
   font-size: 18px;
   display: inline-block;
-  color: #0077B5; /* LinkedIn's official blue color */
+  color: #0077B5; /* The LinkedIn blue color */
 }
 
-/* Optional: Add a hover effect for a better user experience */
-.blog-banner .linkedin-link a:hover {
+.linkedin-icon a:hover {
   color: #005582; /* A slightly darker shade of blue on hover */
 }
