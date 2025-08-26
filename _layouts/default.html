@@ -16,10 +16,10 @@
         <div class="author-info">
           <div class="author-details">
             <p class="author-name">Author : {{ page.author }}</p>
-           {% if page.linkedin_profile %}
+                 {% if page.linkedin_profile %}
       <p class="linkedin-link">
-        <a href="{{ page.linkedin_profile }}" target="_blank" rel="noopener noreferrer">
-          LinkedIn Profile
+        <a href="{{ page.linkedin_profile }}" class="linkedin" target="_blank" rel="noopener noreferrer">
+          <i class="bx bxl-linkedin"></i>
         </a>
       </p>
       {% endif %}
