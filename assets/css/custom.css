@@ -4,26 +4,25 @@
 .container {
   max-width: 700px;
   margin: 2rem auto;
-  padding: 0; /* content padding handled inside sections */
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-  overflow: hidden; /* keeps header/footer inside rounded box */
+  overflow: hidden; /* makes header/footer fit neatly in rounded box */
 }
 
 /* ==========================
    Header
 ========================== */
 .site-header {
-  background-color: #222; /* dark */
-  color: #f4f4f4;        /* light text */
-  padding: 1.5rem;
+  background-color: #222; 
+  color: #f4f4f4;
+  padding: 1.5rem 2rem;   /* consistent padding */
   margin: 0;
 }
 
 .site-header .author-info {
   display: flex;
-  flex-direction: column; /* stack vertically */
+  flex-direction: column;
   gap: 0.5rem;
 }
 
@@ -51,9 +50,9 @@
    Footer
 ========================== */
 .site-footer {
-  background-color: #222; /* dark */
+  background-color: #222; 
   color: #f4f4f4;
-  padding: 1rem;
+  padding: 1rem 2rem;
   margin: 0;
   text-align: center;
   border-top: 1px solid #444;
@@ -78,5 +77,5 @@
 }
 
 .media-icon a:hover i {
-  color: #4eb3e2 !important; /* hover blue */
+  color: #5cbeec !important; /* hover bright blue */
 }
