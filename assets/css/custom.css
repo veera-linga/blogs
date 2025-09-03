@@ -1,42 +1,30 @@
+/* ==========================
+   Container
+========================== */
 .container {
-  max-width: 700px;       /* adjust as needed */
-  margin: 2rem auto;      /* vertical spacing and center horizontally */
-  padding: 0 2rem;        /* horizontal inner padding */
-  background: #fff;       /* optional, for visual contrast */
-  border-radius: 10px;    /* consistent with header */
-  box-shadow: 0 2px 16px rgba(0,0,0,0.04);  /* subtle shadow */
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0; /* content padding handled inside sections */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden; /* keeps header/footer inside rounded box */
 }
 
-.site-header {
-  background-color: #222;
-  color: #f4f4f4;
-  padding: 1.5rem;
-  border-radius: 7px;         /* smaller radius for subtlety */
-  margin-bottom: 1.5rem;
-}
-
-
-/* Header */
+/* ==========================
+   Header
+========================== */
 .site-header {
   background-color: #222; /* dark */
   color: #f4f4f4;        /* light text */
   padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
+  margin: 0;
 }
 
 .site-header .author-info {
   display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.site-header .author-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%; /* circular */
-  margin-right: 1rem;
-  object-fit: cover;
+  flex-direction: column; /* stack vertically */
+  gap: 0.5rem;
 }
 
 .site-header .author-name {
@@ -51,34 +39,44 @@
   color: #bbb;
 }
 
-.site-header .page-title {
-  margin-top: 0;
+/* ==========================
+   Content
+========================== */
+.site-content {
+  padding: 1.5rem 2rem;
+  color: #333;
 }
 
-/* Footer */
+/* ==========================
+   Footer
+========================== */
 .site-footer {
   background-color: #222; /* dark */
   color: #f4f4f4;
   padding: 1rem;
-  margin-top: 2rem;
+  margin: 0;
   text-align: center;
   border-top: 1px solid #444;
 }
 
-
-/* LinkedIn blue */
-.media-icon a.linkedin i {
-  color: #ffffff;
-}
-.media-icon a.linkedin i:hover {
-  color: #005983;
+/* ==========================
+   Social Icons
+========================== */
+.media-icon {
+  margin-top: 0.5rem;
 }
 
-/* GitHub black or dark blue */
-.media-icon a.github i {
-  color: #ffffff;
-}
-.media-icon a.github i:hover {
-  color: #005983;
+.media-icon a {
+  margin-right: 0.5rem;
+  text-decoration: none;
 }
 
+.media-icon a i {
+  color: #ffffff !important; /* default white */
+  font-size: 1.4rem;
+  transition: color 0.2s ease;
+}
+
+.media-icon a:hover i {
+  color: #4eb3e2 !important; /* hover blue */
+}
