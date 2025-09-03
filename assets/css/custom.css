@@ -46,12 +46,12 @@
   text-align: center;
   border-top: 1px solid #444;
 }
-.linkedin-icon a {
+.media-icon a {
   font-size: 18px;
   display: inline-block;
   color: #fff; /* The LinkedIn white color */
 }
 
-.linkedin-icon a:hover {
-  color: #005582; /* A slightly darker shade of blue on hover */
+.media-icon a:hover {
+  color: #28a8ee; /* A slightly darker shade of blue on hover */
 }
