@@ -7,16 +7,16 @@
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-  overflow: hidden; /* makes header/footer fit neatly in rounded box */
+  overflow: hidden;
 }
 
 /* ==========================
    Header
 ========================== */
 .site-header {
-  background-color: #222; 
-  color: #f4f4f4;
-  padding: 1.5rem 2rem;   /* consistent padding */
+  background-color: #222; /* dark */
+  color: #f4f4f4;        /* light text */
+  padding: 1.5rem 2rem;  /* ✅ consistent padding */
   margin: 0;
 }
 
@@ -42,7 +42,7 @@
    Content
 ========================== */
 .site-content {
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 2rem; /* ✅ added to match header */
   color: #333;
 }
 
@@ -50,9 +50,9 @@
    Footer
 ========================== */
 .site-footer {
-  background-color: #222; 
+  background-color: #222; /* dark */
   color: #f4f4f4;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem;     /* ✅ added to match header */
   margin: 0;
   text-align: center;
   border-top: 1px solid #444;
@@ -61,21 +61,17 @@
 /* ==========================
    Social Icons
 ========================== */
-.media-icon {
-  margin-top: 0.5rem;
-}
-
 .media-icon a {
   margin-right: 0.5rem;
   text-decoration: none;
 }
 
 .media-icon a i {
-  color: #ffffff !important; /* default white */
+  color: #ffffff !important; /* white by default */
   font-size: 1.4rem;
   transition: color 0.2s ease;
 }
 
 .media-icon a:hover i {
-  color: #5cbeec !important; /* hover bright blue */
+  color: #41bcf5 !important; /* bright blue on hover */
 }
