@@ -1,3 +1,21 @@
+.container {
+  max-width: 700px;       /* adjust as needed */
+  margin: 2rem auto;      /* vertical spacing and center horizontally */
+  padding: 0 2rem;        /* horizontal inner padding */
+  background: #fff;       /* optional, for visual contrast */
+  border-radius: 10px;    /* consistent with header */
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);  /* subtle shadow */
+}
+
+.site-header {
+  background-color: #222;
+  color: #f4f4f4;
+  padding: 1.5rem;
+  border-radius: 7px;         /* smaller radius for subtlety */
+  margin-bottom: 1.5rem;
+}
+
+
 /* Header */
 .site-header {
   background-color: #222; /* dark */
@@ -46,12 +64,21 @@
   text-align: center;
   border-top: 1px solid #444;
 }
-.media-icon a {
-  font-size: 18px;
-  display: inline-block;
-  color: #fff; /* The LinkedIn white color */
+
+
+/* LinkedIn blue */
+.media-icon a.linkedin i {
+  color: #ffffff;
+}
+.media-icon a.linkedin i:hover {
+  color: #005983;
 }
 
-.media-icon a:hover {
-  color: #28a8ee; /* A slightly darker shade of blue on hover */
+/* GitHub black or dark blue */
+.media-icon a.github i {
+  color: #ffffff;
 }
+.media-icon a.github i:hover {
+  color: #005983;
+}
+
