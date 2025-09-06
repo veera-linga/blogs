@@ -1,7 +1,7 @@
 ---
 author: "Veera Linga"
 linkedin_profile: "https://www.linkedin.com/in/from8990"
-github_profile: "https://veera-linga.github.io/profile"
+github_profile: "https://github.com/veera-linga"
 date: "AUG-2025"
 ---
 
