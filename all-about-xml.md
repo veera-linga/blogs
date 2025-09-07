@@ -11,9 +11,9 @@ In the world of digital content, managing and transforming structured data effic
 
 <div class="mermaid">
 %%{init: {'theme':'base', 'flowchart': {'layout': 'elk'}}}%%
-graph TD
+flowchart TD
 
-  %% UML-aligned CMS boundary
+  %% CMS boundary
   subgraph CMS ["Content Management System"]
     XML(["XML Document"]):::artifact
     DTD(["DTD"]):::artifact
@@ -23,11 +23,11 @@ graph TD
     Processor[["XSLT Processor / DITA-OT"]]:::component
   end
 
-  %% Outputs
-  OutputXML(["Transformed XML"]):::artifact
-  HTML(["HTML"]):::artifact
-  MD(["Markdown"]):::artifact
-  PDF(["PDF"]):::artifact
+  %% Outputs boundary
+    OutputXML(["Transformed XML"]):::outputxml
+    HTML(["HTML"]):::html
+    MD(["Markdown"]):::md
+    PDF(["PDF"]):::pdf
 
   %% Relations
   XML <--> DTD
@@ -42,16 +42,16 @@ graph TD
   Processor --> PDF
 
   %% STYLES
-  classDef artifact fill: #b4d1aa,stroke: #000000,stroke-width:1.5px,color: #000,rx:5,ry:5
-  classDef component fill: #f4c9a1,stroke: #000000,stroke-width:1.5px,color: #000,rx:3,ry:3
-  classDef activity fill: #f5d8bd,stroke: #000000,stroke-width:1.5px,color: #000,rx:15,ry:15
-  classDef asset fill: #a7d8eaff,stroke: #000000,stroke-width:1.5px,color: #000,rx:5,ry:5
+  classDef artifact fill: #b4d1aa,stroke: #000,stroke-width:1.5px,color: #000,rx:6,ry:6
+  classDef component fill: #f4c9a1,stroke: #000,stroke-width:1.5px,color: #000,rx:6,ry:6
+  classDef activity fill: #f5d8bd,stroke: #000,stroke-width:1.5px,color: #000,rx:6,ry:6
+  classDef asset fill: #a7d8ea,stroke: #000,stroke-width:1.5px,color: #000,rx:6,ry:6
 
   %% Outputs with distinct shades
-  style OutputXML fill: #c8f1c8,stroke: #000000,color: #000,rx:5,ry:5
-  style HTML fill: #bbdefb,stroke: #000000,color: #000,rx:5,ry:5
-  style PDF fill: #f9b3aa,stroke: #000000,color: #000,rx:5,ry:5
-  style MD fill: #d3b8ea,stroke: #000000,color: #000,rx:5,ry:5
+  classDef outputxml fill: #c8f1c8,stroke: #000,color: #000,rx:6,ry:6
+  classDef html fill: #bbdefb,stroke: #000,color: #000,rx:6,ry:6
+  classDef pdf fill: #f9b3aa,stroke: #000,color: #000,rx:6,ry:6
+  classDef md fill: #d3b8ea,stroke: #000,color: #000,rx:6,ry:6
 </div>
 
 ### Let’s Understand the Definitions
