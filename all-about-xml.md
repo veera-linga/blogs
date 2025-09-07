@@ -23,7 +23,7 @@ graph TD
     Processor[["XSLT Processor / DITA-OT"]]:::component
   end
 
-  %% Outputs as artifacts
+  %% Outputs
   OutputXML(["Transformed XML"]):::artifact
   HTML(["HTML"]):::artifact
   MD(["Markdown"]):::artifact
