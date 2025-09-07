@@ -7,14 +7,14 @@ date: "SEP-2025"
 
 # All About Managing and Transforming XML Content
 
-XML lies at the heart of many content management and publishing systems across various domains. This blog unpacks the essential components involved: CMS, DTD, XML, and XSLT—and discusses how they work together to create modular and reusable content.
+XML lies at the heart of many content management and publishing systems across various domains. This blog unpacks the essential components involved: CMS, DTD, XML, and XSLT, and discusses how they work together to create modular and reusable content.
 
 <div class="mermaid">
 %%{init: {'theme':'base', 'flowchart': {'layout': 'elk'}}}%%
 flowchart TD
 
   %% CMS boundary
-  subgraph CMS ["Content Management System"]
+  subgraph CMS ["CMS"]
     XML(["XML Document"])
     DTD(["DTD / XSD"])
     Metadata(["Metadata"])
@@ -82,33 +82,44 @@ flowchart TD
 
 ### Let’s explore the abbreviations
 
-- **CMS (Content Management System):** A platform to create, store, manage, and publish content efficiently.
+#### CMS (Content Management System)
+  
+  A platform to create, store, manage, and publish content efficiently.
 
-- **DTD (Document Type Definition):**  
+#### DTD (Document Type Definition) 
+  
   Rules that define the structure, allowed tags, and attributes of an XML document. DTD validates the XML's structure but does not support data types or namespaces.
 
-- **XSD (XML Schema Definition):**  
+#### XSD (XML Schema Definition) 
+  
   A modern alternative to DTD, XML-based schema language that defines and validates the structure, tags, attributes, data types, and relationships in an XML document. It supports namespaces and complex data validation.
 
-- **XML (Extensible Markup Language):**  
+#### XML (Extensible Markup Language) 
+  
   A flexible text format that uses custom tags to structure data, designed to be both human and machine readable.
 
-- **Metadata:**  
+#### Metadata 
+  
   Essential information about the XML document itself, such as its properties or descriptive details.
 
-- **KeyDefs / DITAVALS (Variables):**  
+#### KeyDefs / DITAVALS (Variables) 
+  
   Named placeholders or values used in XML content to enable modular reuse and customization. For example, content can vary by product version or model, and variables allow you to mark those differences in the source XML and publish selectively.
 
-- **Assets:**  
+#### Assets 
+  
   External supporting files linked to XML content like images, videos, or PDFs.
 
-- **XSLT (Extensible Stylesheet Language Transformations):**  
+#### XSLT (Extensible Stylesheet Language Transformations) 
+  
   A language used to transform XML documents into other forms like HTML, PDF, or markdown by applying a set of transformation rules.
 
-- **XPath (XML Path Language):**  
+#### XPath (XML Path Language) 
+  
   A query language used within XSLT to locate and select parts of an XML document for precise transformation. XPath lets XSLT precisely pick which parts of the XML to transform or output, based on criteria.
 
-- **XSLT Processors:**  
+#### XSLT Processors 
+  
   Software that apply XSLT stylesheets to XML data to produce output documents in various formats. DITA-OT is a sophisticated transformation toolkit.
 
 ## Putting It All Together
