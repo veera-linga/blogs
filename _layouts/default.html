@@ -21,20 +21,6 @@
   <body>
     <div class="container">
 
-      <!-- Breadcrumbs Navigation (Add this block above header) -->
-      <nav class="breadcrumbs" style="margin: 1em 0;">
-        <a href="{{ '/' | relative_url }}">Blogs</a>
-        {% if page.collection == "posts" or page.layout == "post" %}
-          <span> &raquo; </span>
-          <a href="{{ '//' | relative_url }}"></a>
-          <span> &raquo; </span>
-          <span>{{ page.title }}</span>
-        {% elsif page.title != "Blogs" %}
-          <span> &raquo; </span>
-          <span>{{ page.title }}</span>
-        {% endif %}
-      </nav>
-
       <!-- Header -->
 <header class="site-header">
   <div class="author-info">
@@ -58,10 +44,19 @@
 
       <!-- Main Content -->
       <main class="site-content">
-        <nav class="main-nav" style="margin-bottom:1em;">
-          <a href="{{ '/' | relative_url }}">Blogs</a> |
+ <!-- Breadcrumbs Navigation (Add this block above header) -->
+      <nav class="breadcrumbs" style="margin: 1em 0;">
+        <a href="{{ '/' | relative_url }}">Blogs</a>
+        {% if page.collection == "posts" or page.layout == "post" %}
+          <span> &raquo; </span>
           <a href="{{ '//' | relative_url }}"></a>
-        </nav>
+          <span> &raquo; </span>
+          <span>{{ page.title }}</span>
+        {% elsif page.title != "Blogs" %}
+          <span> &raquo; </span>
+          <span>{{ page.title }}</span>
+        {% endif %}
+      </nav>
         {{ content }}
       </main>
 
