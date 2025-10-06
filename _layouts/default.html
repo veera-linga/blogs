@@ -21,6 +21,20 @@
   <body>
     <div class="container">
 
+      <!-- Breadcrumbs Navigation (Add this block above header) -->
+      <nav class="breadcrumbs" style="margin: 1em 0;">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        {% if page.collection == "posts" or page.layout == "post" %}
+          <span> &raquo; </span>
+          <a href="{{ '/blog/' | relative_url }}">Blogs</a>
+          <span> &raquo; </span>
+          <span>{{ page.title }}</span>
+        {% elsif page.title != "Home" %}
+          <span> &raquo; </span>
+          <span>{{ page.title }}</span>
+        {% endif %}
+      </nav>
+
       <!-- Header -->
 <header class="site-header">
   <div class="author-info">
