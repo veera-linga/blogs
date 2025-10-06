@@ -58,6 +58,10 @@
 
       <!-- Main Content -->
       <main class="site-content">
+        <nav class="main-nav" style="margin-bottom:1em;">
+          <a href="{{ '/' | relative_url }}">Home</a> |
+          <a href="{{ '/blog/' | relative_url }}">Blogs</a>
+        </nav>
         {{ content }}
       </main>
 
