@@ -66,11 +66,37 @@
       </footer>
 
     </div>
+<!-- Mermaid and svg-pan-zoom scripts -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    mermaid.initialize({ startOnLoad: true });
-  });
-</script>
+    <script src="https://unpkg.com/svg-pan-zoom/dist/svg-pan-zoom.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        mermaid.initialize({ startOnLoad: true });
+
+        // MutationObserver attaches pan-zoom and a toolbar to each chart
+        const observer = new MutationObserver(function() {
+          document.querySelectorAll('.mermaid svg').forEach(function(svg) {
+            if (!svg.panZoomInstance) {
+              svg.panZoomInstance = svgPanZoom(svg, {
+                zoomEnabled: true,
+                controlIconsEnabled: false
+              });
+              // Create toolbar element
+              let toolbar = document.createElement('div');
+              toolbar.style.margin = '8px 0';
+              toolbar.innerHTML = `
+                <button title="Zoom In"><i class='bx bx-zoom-in'></i></button>
+                <button title="Zoom Out"><i class='bx bx-zoom-out'></i></button>
+                <button title="Center"><i class='bx bx-target-lock'></i></button>
+                <button title="Open in New Tab"><i class='bx bx-link-external'></i></button>
+              `;
+              // Insert toolbar above chart SVG
+              svg.parentElement.insertBefore(toolbar, svg);
+            }
+          });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+    </script>
   </body>
 </html>
