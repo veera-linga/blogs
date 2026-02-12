@@ -1002,3 +1002,7 @@ Documentation drifts when it's separate from code. Code-to-Doc makes the codebas
 
 ---
 
+### Keywords
+
+`Code-to-Doc` `Docs-as-Code` `LLM` `OpenAPI` `Documentation Automation` `Conventional Commits` `CI/CD` `E2E Testing` `Technical Writing` `REST API` `GitHub Actions` `SaaS` `Software Documentation` `CLI Reference` `Troubleshooting Reference` `Diátaxis Framework` `Release Notes` `API Reference` `Markdown` `Developer Experience` `By-Product Mindset`
+
