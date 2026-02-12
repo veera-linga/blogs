@@ -940,29 +940,24 @@ Code-to-Doc is powerful, but it doesn't replace all documentation. Some content 
 ### Quick Wins (Start Here)
 
 1. **Adopt Conventional Commits** → Automated release notes
-
 ```bash
 npm install -g @commitlint/cli @commitlint/config-conventional
 ```
 
 2. **Document your OpenAPI specs** → API reference
-
    - Add `description` and `example` to every endpoint, parameter, and response
 
 3. **Generate CLI docs from your framework** → CLI reference
-
    - Cobra: `doc.GenMarkdownTree()`
    - Click: `sphinx-click` or `click-man`
    - oclif: built-in doc generation
 
 4. **Add JSDoc annotations to E2E tests** → How-to guides
-
 ```typescript
 /** @scenario What user accomplishes  @steps 1. ... 2. ... */
 ```
 
 5. **Structure your error / log enums** → Troubleshooting reference
-
    - Add `@userMessage` and `@troubleshooting` to every error code
 
 ---
