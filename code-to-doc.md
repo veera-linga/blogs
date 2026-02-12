@@ -87,7 +87,8 @@ The information exists. It's just trapped in the codebase.
 
 These are complementary, not competing approaches.
 
-```mermaid
+<div class="mermaid">
+%%{init: {'theme':'base', 'flowchart': {'layout': 'elk'}}}%%
 flowchart TB
     subgraph DaC["<b>Docs-as-Code to Manage</b>"]
         direction TB
@@ -113,7 +114,7 @@ flowchart TB
     style DaC fill:#e8f4fd,stroke:#2196F3
     style CtD fill:#e8f9e8,stroke:#4CAF50
     style Outcome fill:#fff3e0,stroke:#FF9800
-```
+</div>
 
 > **Use both together**: Code-to-Doc *generates* the content; Docs-as-Code *manages* the workflow. One eases content creation and the other smoothens the publishing pipeline.
 
@@ -123,7 +124,8 @@ flowchart TB
 
 Here's the complete mapping from code artifacts to the documentation your end users actually need:
 
-```mermaid
+<div class="mermaid">
+%%{init: {'theme':'base', 'flowchart': {'layout': 'elk'}}}%%
 flowchart LR
     README["📖 README Files</br>📋 Comments in Code"] -->|extract| Concepts["Conceptual Overviews"]
     E2E["🧪 E2E Test Suites</br>🔌 Integration Tests</br>⚙️ Config Files"] -->|transform| HowTo["How-To Guides"]
@@ -140,7 +142,7 @@ flowchart LR
     style Diagnostic fill:#e3f2fd,stroke:#1565C0
     style Release fill:#e3f2fd,stroke:#1565C0
     style CLIRef fill:#e3f2fd,stroke:#1565C0
-```
+</div>
 
 Each mapping relies on coding standards that teams already adopt for code quality. Technical Documentation draft generation is the bonus.
 
@@ -469,7 +471,7 @@ response = client.get("/api/v2/projects", params={
 # Response: 200 OK
 # { "items": [...], "page": 1, "per_page": 20 }
 ```
-```
+
 ---
 
 ## 5. Troubleshooting Reference from Error Handling
@@ -920,8 +922,8 @@ Code-to-Doc is powerful, but it doesn't replace all documentation. Some content 
 
 | Documentation Type | Why It Needs a Human |
 |-------------------|---------------------|
-| Information Architecture & UX | Organizing automated snippets into a logical, searchable hierarchy that matches user mental models. |
-| Pipeline Curation & Maintenance | Auditing automated output for clarity and ensuring the "extraction glue" evolves alongside the product. |
+| **Information Architecture & UX** | Organizing automated snippets into a logical, searchable hierarchy that matches user mental models. |
+| **Pipeline Curation & Maintenance** | Auditing automated output for clarity and ensuring the "extraction glue" evolves alongside the product. |
 | **Getting-started tutorials** | Require a curated learning journey with a specific narrative arc |
 | **Conceptual "why" explanations** | Code tells you *what* and *how* — writers explain *why* and *when* |
 | **Best practices & patterns** | Come from experience, not from code structure |
