@@ -8,8 +8,8 @@ date: "AUG-2025"
 Welcome to blogs! 
 Check out these for in-depth take on technical writing concepts:
 
+- [Code-to-Doc: Automating Technical Documentation from Codebase](code-to-doc.html)
 - [Implementing Docs as Code](implementing-docs-as-code.html)
 - [Automating OpenAPI Docs](automating-openapi-docs.html)
 - [All About XMLs](all-about-xml.html)
-- [Code-to-Doc: Automating Technical Documentation from Codebase](code-to-doc.html)
 - More coming Soon!
