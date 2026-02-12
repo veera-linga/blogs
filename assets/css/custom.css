@@ -2,12 +2,26 @@
    Container
 ========================== */
 .container {
-  max-width: 700px;
+  width: 95%;           /* Takes up most of the screen on mobile */
+  max-width: 1000px;    /* Increased from 700px for a better desktop feel */
   margin: 2rem auto;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+}
+
+/* Add a Media Query for even better mobile spacing */
+@media (max-width: 600px) {
+  .container {
+    width: 100%;        /* Use full width on very small phones */
+    margin: 0;          /* Remove top/bottom margin to save space */
+    border-radius: 0;   /* Optional: remove curves on mobile for a 'native' look */
+  }
+  
+  .site-header, .site-content, .site-footer {
+    padding: 1rem;      /* Slightly tighter padding for small screens */
+  }
 }
 
 /* ==========================
@@ -44,6 +58,16 @@
 .site-content {
   padding: 1.5rem 2rem; /* ✅ added to match header */
   color: #333;
+}
+
+pre, code {
+  overflow-x: auto;   /* Adds a scrollbar if the code is too long */
+  white-space: pre;   /* Keeps formatting exactly as written */
+  word-wrap: normal;  /* Prevents words from breaking onto new lines */
+  display: block;     /* Ensures it behaves as a container */
+  padding: 1rem;
+  background: #f4f4f4; /* Optional: gives code a light grey background */
+  border-radius: 5px;
 }
 
 /* ==========================
