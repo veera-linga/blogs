@@ -5,25 +5,53 @@ github_profile: "https://github.com/veera-linga"
 date: "JAN-2026"
 ---
 
-# Code-to-Doc: Automating Technical Documentation from Your Codebase
+# Code-to-Doc: Automating Technical Documentation from Codebase
 
-*How industry-standard coding practices enable automatic documentation generation—and why documentation should be a by-product of quality code, not a separate effort.*
+*How industry-standard coding practices enable automatic customer documentation generation — and why customer documentation should be a by-product of quality code, not a separate effort.*
 
 ---
 
+> **TL;DR** — Developers already document their code in READMEs, OpenAPI specs, e2e tests, error handlers, CLI help text, and commit messages. Code-to-Doc is a methodology that **extracts** that information and transforms it into customer documentation — release notes, API references, how-to guides, troubleshooting references, CLI references, and more — so docs can never drift from reality.
+
+---
+
+### **Table of Contents**
+
+* [**The Documentation Problem**](#the-documentation-problem)
+* [**What is Code-to-Doc?**](#what-is-code-to-doc)
+* [**Code-to-Doc vs. Docs-as-Code**](#code-to-doc-vs-docs-as-code)
+* [**The Codebase-to-Documentation Map**](#the-codebase-to-documentation-map)
+* [**The 8 Pillars of Automation**](#1-conceptual-documentation-from-readmes)
+    1. [Conceptual Documentation (READMEs)](#1-conceptual-documentation-from-readmes)
+    2. [API Reference (OpenAPI)](#2-api-reference-from-openapi)
+    3. [How-To Guides (E2E Tests)](#3-how-to-guides-from-e2e-tests)
+    4. [Code Examples (Integration Tests)](#4-code-examples-from-integration-tests)
+    5. [Troubleshooting Reference (Error Handling)](#5-troubleshooting-reference-from-error-handling)
+    6. [Log Message References](#6-log-messages-references)
+    7. [Release Notes (Commits)](#7-release-notes-from-commits)
+    8. [CLI Reference (Command Definitions)](#8-cli-reference-from-command-definitions)
+* [**Value add by writers**](#value-add-by-writers)
+* [**The By-Product Mindset**](#the-by-product-mindset)
+* [**Getting Started**](#getting-started)
+* [**Conclusion**](#conclusion)
+* [**Further Reading**](#further-reading)
+
 ## The Documentation Problem
 
-Every software team faces the same challenge: documentation drifts from reality.
+Every software team faces the same challenge: **documentation drifts from reality**.
 
 You ship a feature on Monday. The docs say one thing, the code does another. By next Monday, two more changes have landed, and the documentation is a historical artifact rather than a useful guide.
 
 We've tried to solve this:
-- **More writers** → Doesn't scale, still falls behind
-- **Developer-written docs** → Inconsistent, often neglected
-- **Docs-as-Code** → Better workflow, but still manual writing
-- **Wiki pages** → Become graveyards of outdated information
 
-The fundamental problem isn't process or tooling. It's that **documentation and code are separate artifacts** that must be manually kept in sync.
+| Approach | Why It Falls Short |
+|----------|--------------------|
+| **More writers** | Doesn't scale; still falls behind |
+| **Developers writing docs** | Inconsistent, often neglected |
+| **Docs-as-Code** | Better workflow, but still manual writing |
+| **Wiki pages or articles** | Become graveyards of outdated information |
+
+The fundamental problem is not process or tooling. It's that **documentation and code are separate artifacts** that must be manually kept in sync.
 
 What if they weren't separate?
 
@@ -31,116 +59,90 @@ What if they weren't separate?
 
 ## What is Code-to-Doc?
 
-**Code-to-Doc** is a methodology where technical documentation is automatically generated from the codebase itself. Not as an afterthought, but as a natural by-product of well-structured code that follows industry standards.
+**Code-to-Doc** is a methodology where technical documentation is automatically generated from the codebase itself — not as an afterthought, but as a natural by-product of well-structured code that follows industry standards.
 
 ### The Key Insight
 
-Developers already document their code—just not in a format that reaches end users:
+Developers already document their code — just not in a format that reaches end users:
 
 | What Developers Write | Where It Lives | What End Users Need |
 |-----------------------|----------------|---------------------|
 | Feature descriptions | README files | Conceptual overviews |
-| API descriptions | OpenAPI specs | API reference docs |
+| Config explanations | Inline comments | Guides information |
+| Code samples | Integration tests | Usage examples |
 | User workflow steps | E2E test scenarios | How-to guides |
-| Error messages | Exception handling | Troubleshooting guides |
-| Log messages | Logging statements | Diagnostic guides |
+| API spec and descriptions | OpenAPIs | API reference docs |
+| Command definitions | CLI help text | CLI reference docs |
+| Error messages | Exception handling | Troubleshooting reference |
+| Log messages | Logging information | Log reference |
 | Change descriptions | Commit messages | Release notes |
-| Config explanations | Inline comments | Setup guides |
 
 The information exists. It's just trapped in the codebase.
 
-**Code-to-Doc extracts this information and transforms it into user-facing documentation.**
+**Code-to-Doc extracts this information and transforms it into product technical documentation.**
 
-### Code-to-Doc vs. Docs-as-Code
+---
 
-These are complementary, not competing approaches:
+## Code-to-Doc vs. Docs-as-Code
 
+These are complementary, not competing approaches.
+
+```mermaid
+flowchart TB
+    subgraph DaC["<b>Docs-as-Code to Manage</b>"]
+        direction TB
+        A1["content in markup language"]
+        A2["Version control"]
+        A3["Pull requests and reviews"]
+        A4["CI/CD pipelines"]
+    end
+
+    subgraph CtD["<b>Code-to-Doc to Generate</b>"]
+        direction TB
+        B1["Extract from OpenAPI"]
+        B2["Extract from tests"]
+        B3["Extract from error handling"]
+        B4["Extract from READMEs"]
+        B5["Extract from CLI"]
+        B6["Extract from commit messages"]
+    end
+
+    DaC -->|"Better docs workflow"| Outcome["Published Documentation"]
+    CtD -->|"Content that cannot drift"| A1
+
+    style DaC fill:#e8f4fd,stroke:#2196F3
+    style CtD fill:#e8f9e8,stroke:#4CAF50
+    style Outcome fill:#fff3e0,stroke:#FF9800
 ```
-DOCS-AS-CODE                          CODE-TO-DOC
-────────────                          ───────────
-Focus: How to MANAGE docs             Focus: How to GENERATE docs
-                                      
-Treats docs like code:                Generates docs from code:
-• Version control                     • Extract from OpenAPI
-• Pull requests                       • Extract from tests
-• CI/CD pipelines                     • Extract from error handling
-• Plain text formats                  • Extract from READMEs
-                                      
-Still requires: Manual writing        Requires: Well-structured code
-                                      
-Output: Better doc workflow           Output: Docs that can't drift
-```
 
-**Use both together**: Code-to-Doc generates the content; Docs-as-Code manages the workflow.
+> **Use both together**: Code-to-Doc *generates* the content; Docs-as-Code *manages* the workflow. One eases content creation and the other smoothens the publishing pipeline.
 
 ---
 
 ## The Codebase-to-Documentation Map
 
-Here's how code elements map to the documentation your end users actually need:
+Here's the complete mapping from code artifacts to the documentation your end users actually need:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                  CODEBASE → END-USER DOCUMENTATION MAP                      │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  CODEBASE ELEMENT              USER DOCUMENTATION                           │
-│  ────────────────              ──────────────────                           │
-│                                                                             │
-│  📖 README Files           ──► Conceptual Overviews                        │
-│     └─ feature descriptions    └─ "What is X?" articles                    │
-│     └─ architecture notes      └─ Product concepts                         │
-│     └─ getting started         └─ Quick start guides                       │
-│                                                                             │
-│  📄 OpenAPI Specification  ──► API Reference                               │
-│     └─ endpoints, params       └─ Endpoint documentation                   │
-│     └─ schemas                 └─ Request/response examples                │
-│     └─ descriptions            └─ Authentication guides                    │
-│                                                                             │
-│  🧪 E2E Test Suites        ──► How-To Guides                              │
-│     └─ test scenarios          └─ Step-by-step procedures                  │
-│     └─ user workflows          └─ Task-based documentation                 │
-│     └─ assertions              └─ Expected outcomes                        │
-│                                                                             │
-│  ❌ Error Handling         ──► Troubleshooting Guides                      │
-│     └─ exception messages      └─ Error explanations                       │
-│     └─ error codes             └─ Problem/solution docs                    │
-│     └─ validation messages     └─ "How to fix" articles                    │
-│                                                                             │
-│  📋 Log Messages           ──► Diagnostic Guides                           │
-│     └─ info/warn/error logs    └─ "What this means" guides                 │
-│     └─ debug messages          └─ Troubleshooting steps                    │
-│     └─ audit logs              └─ Activity documentation                   │
-│                                                                             │
-│  📝 Commit Messages        ──► Release Notes                               │
-│     └─ conventional commits    └─ What's new                               │
-│     └─ PR descriptions         └─ Breaking changes                         │
-│     └─ issue references        └─ Upgrade guides                           │
-│                                                                             │
-│  ⚙️ Configuration Files    ──► Setup & Admin Guides                       │
-│     └─ feature flags           └─ Configuration reference                  │
-│     └─ settings + defaults     └─ Feature documentation                    │
-│     └─ inline comments         └─ Admin guides                             │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart LR
+    README["📖 README Files</br>📋 Comments in Code"] -->|extract| Concepts["Conceptual Overviews"]
+    E2E["🧪 E2E Test Suites</br>🔌 Integration Tests</br>⚙️ Config Files"] -->|transform| HowTo["How-To Guides"]
+    ERR["❌ Error Handling"] -->|extract| Troubleshoot["Error Message Reference and Troubleshooting"]
+    LOG["📋 Log Messages"] -->|extract| Diagnostic["Log Reference"]
+    GIT["📝 Commit Messages"] -->|generate| Release["Release Notes"]
+    CLI["💻 CLI Definitions"] -->|generate| CLIRef["CLI Reference"]
+    OAS["📄 OpenAPI Specs"] -->|generate| APIRef["API Reference"]
+   
+    style Concepts fill:#e3f2fd,stroke:#1565C0
+    style APIRef fill:#e3f2fd,stroke:#1565C0
+    style HowTo fill:#e3f2fd,stroke:#1565C0
+    style Troubleshoot fill:#e3f2fd,stroke:#1565C0
+    style Diagnostic fill:#e3f2fd,stroke:#1565C0
+    style Release fill:#e3f2fd,stroke:#1565C0
+    style CLIRef fill:#e3f2fd,stroke:#1565C0
 ```
 
----
-
-## The Standards That Enable Automation
-
-Code-to-Doc works when code follows consistent standards. These standards exist for code quality—documentation generation is a bonus.
-
-```
-INDUSTRY STANDARDS          PRIMARY BENEFIT              DOCUMENTATION BENEFIT
-──────────────────          ───────────────              ─────────────────────
-Structured READMEs      →   Better onboarding        →   Concept docs extraction
-OpenAPI Specification   →   API consistency          →   API reference generation
-Conventional Commits    →   Clear git history        →   Release notes generation
-Test documentation      →   Maintainable tests       →   How-to guide generation
-Structured logging      →   Better debugging         →   Troubleshooting guides
-Error message standards →   Better UX                →   Error documentation
-```
+Each mapping relies on coding standards that teams already adopt for code quality. Technical Documentation draft generation is the bonus.
 
 ---
 
@@ -150,7 +152,7 @@ Error message standards →   Better UX                →   Error documentation
 
 Every well-maintained codebase has README files that explain what the code does. These are goldmines for conceptual documentation.
 
-**What developers write** (in service README):
+**What developers write** (in a service README):
 
 ```markdown
 # Authentication Service
@@ -232,9 +234,9 @@ To enable concept extraction, structure READMEs consistently:
 
 ### The Source: OpenAPI Specification
 
-OpenAPI specs define your REST APIs. When properly documented, they generate complete API reference documentation.
+OpenAPI specs define your REST APIs. When properly documented, they generate complete API reference documentation — and the tooling is already mature.
 
-**What developers write** (in OpenAPI spec):
+**What developers write** (in an OpenAPI spec):
 
 ```yaml
 openapi: 3.1.0
@@ -283,19 +285,20 @@ paths:
                 expires_in: 900
         '401':
           description: Invalid credentials
-# ... additional endpoints follow same pattern
+  # ... additional endpoints follow the same pattern
 ```
 
 **What this generates**:
 
-- Complete API reference with all endpoints
-- Request/response examples
-- Error code reference
+- Complete API reference with all endpoints grouped by tag
+- Request/response examples with schema validation
+- Error code reference tables
 - Interactive API explorer (Swagger UI / Redoc)
+- Client SDK stubs (via OpenAPI Generator)
 
 ### OpenAPI Documentation Standard
 
-To maximize documentation generation, every endpoint needs:
+To maximise documentation generation, ensure every endpoint includes:
 
 | Element | Required | Purpose |
 |---------|----------|---------|
@@ -306,6 +309,9 @@ To maximize documentation generation, every endpoint needs:
 | `parameters[].example` | Yes | Shows example values |
 | `responses[].description` | Yes | Documents each response |
 | `responses[].example` | Yes | Shows example responses |
+| `operationId` | Yes | Used for SDK method names |
+
+> **Tooling**: Redoc, Swagger UI, Stoplight, and ReadMe can all consume an OpenAPI spec and produce a polished API reference site with zero manual writing.
 
 ---
 
@@ -313,7 +319,7 @@ To maximize documentation generation, every endpoint needs:
 
 ### The Source: End-to-End Tests
 
-E2E tests simulate real user workflows. When documented with user intent, they become step-by-step guides.
+E2E tests simulate real user workflows. When documented with user intent, they become step-by-step how-to guides.
 
 **What developers write** (in E2E tests):
 
@@ -330,12 +336,6 @@ describe('Project Management', () => {
    * @prerequisites
    *   - Logged in with member or admin role
    * 
-   * @steps
-   *   1. Click "New Project" from the dashboard
-   *   2. Enter project name and description
-   *   3. Choose visibility (private/public)
-   *   4. Click "Create Project"
-   * 
    * @result Project is created and you're redirected to project page
    */
   it('should create a new project', () => {
@@ -347,7 +347,7 @@ describe('Project Management', () => {
     cy.get('[data-cy=successToast]').should('contain', 'created');
   });
   
-  // ... additional tests follow same pattern
+  // ... additional tests follow the same pattern
 });
 ```
 
@@ -374,7 +374,7 @@ Project is created and you're taken to the project page.
 
 ### Test Documentation Standard
 
-To enable how-to extraction, document tests with:
+To enable comprehensive how-to extraction, document tests with clear annotations and comments:
 
 ```typescript
 /**
@@ -385,19 +385,94 @@ To enable how-to extraction, document tests with:
  *   - [What must be true before starting]
  * 
  * @steps
- *   1. [First action]
+ *   1. [First action in user language]
  *   2. [Second action]
- *   ...
  * 
  * @result [What success looks like]
- * @note [Optional: important information]
+ * @note [Optional: important caveats]
  * @next_steps [Optional: what to do after]
  */
 ```
 
+> **Note**: The `@scenario`, `@goal`, `@steps`, and `@result` tags are custom conventions you define for your project — not built-in JSDoc tags. A simple parser (or an LLM-assisted extractor) reads these annotations or comments and produces Markdown output. The key is test coverage and consistency across your test suite.
+
 ---
 
-## 4. Troubleshooting Guides from Error Handling
+## 4. Code Examples from Integration Tests
+
+### The Source: Integration and API Tests
+
+Integration tests exercise your public API with real HTTP calls. With light annotation, they become copy-pasteable code examples in your technical guides.
+
+**What developers write** (annotated integration test):
+
+```python
+class TestProjectAPI:
+    """
+    @sdk_section Projects
+    """
+
+    def test_create_project(self, client):
+        """
+        @sdk_example Create a new project
+        @sdk_description Create a project with a name and visibility setting.
+        """
+        response = client.post("/api/v2/projects", json={
+            "name": "Website Redesign",
+            "visibility": "private",
+            "description": "Q1 website overhaul"
+        })
+        assert response.status_code == 201
+        assert response.json()["name"] == "Website Redesign"
+
+    def test_list_projects(self, client):
+        """
+        @sdk_example List all projects
+        @sdk_description Retrieve a paginated list of projects
+            you have access to.
+        """
+        response = client.get("/api/v2/projects", params={
+            "page": 1,
+            "per_page": 20
+        })
+        assert response.status_code == 200
+        assert "items" in response.json()
+```
+
+**What this generates** (for end users):
+
+```markdown
+
+## Create a new project
+
+Create a project with a name and visibility setting.
+
+```python
+response = client.post("/api/v2/projects", json={
+    "name": "Website Redesign",
+    "visibility": "private",
+    "description": "Q1 website overhaul"
+})
+# Response: 201 Created
+# { "name": "Website Redesign", ... }
+```
+
+## List all projects
+
+Retrieve a paginated list of projects you have access to.
+
+```python
+response = client.get("/api/v2/projects", params={
+    "page": 1,
+    "per_page": 20
+})
+# Response: 200 OK
+# { "items": [...], "page": 1, "per_page": 20 }
+```
+```
+---
+
+## 5. Troubleshooting Reference from Error Handling
 
 ### The Source: Error Messages and Exception Handling
 
@@ -425,9 +500,18 @@ public enum AuthError {
      *   - Use "Forgot Password" while waiting
      * @commonCause Forgotten password, brute force attempt
      */
-    RATE_LIMITED("AUTH002", "Rate limit exceeded");
+    RATE_LIMITED("AUTH002", "Rate limit exceeded"),
+
+    /**
+     * @userMessage "Your session has expired. Please log in again."
+     * @troubleshooting
+     *   - Log in again to get a new session
+     *   - If this happens frequently, check your token refresh configuration
+     * @commonCause Idle timeout, clock skew between client and server
+     */
+    SESSION_EXPIRED("AUTH003", "Session expired");
     
-    // ... additional errors follow same pattern
+    // ... additional errors follow the same pattern
 }
 ```
 
@@ -440,7 +524,9 @@ public enum AuthError {
 
 **Message**: "The email or password you entered is incorrect."
 
-**How to Fix**:
+**Common causes**: Typos, forgotten passwords.
+
+**How to fix**:
 1. Double-check your email address for typos
 2. Verify Caps Lock is not enabled
 3. Try "Forgot Password" to reset
@@ -451,32 +537,49 @@ public enum AuthError {
 
 **Message**: "Too many login attempts. Try again in X minutes."
 
-**How to Fix**:
+**Common causes**: Forgotten password, automated brute-force protection.
+
+**How to fix**:
 1. Wait for the lockout period to expire
 2. Use "Forgot Password" while waiting
+
+---
+
+## AUTH003: Session Expired
+
+**Message**: "Your session has expired. Please log in again."
+
+**Common causes**: Idle timeout, clock skew between client and server.
+
+**How to fix**:
+1. Log in again to get a new session
+2. If this happens frequently, check your token refresh configuration
 ```
 
 ### Error Documentation Standard
 
-Structure error definitions with user-facing metadata:
+Structure error definitions with metadata:
 
 ```java
 /**
- * @code [Unique error code]
- * @userMessage [What to show the user]
- * @causes [Why this happens - list]
- * @solutions [How to fix - list]
+ * @code        [Unique error code, e.g. AUTH001]
+ * @userMessage [What to show the end user]
+ * @commonCause [Why this typically happens]
+ * @troubleshooting
+ *   - [Step-by-step resolution actions]
  * @securityNote [Optional: security implications]
  */
 ```
 
+> **Note**: Like the test annotations, `@userMessage`, `@troubleshooting`, and `@commonCause` are custom Javadoc-style conventions you define. A custom Doclet or annotation processor extracts these into structured data for doc generation.
+
 ---
 
-## 5. Diagnostic Guides from Log Messages
+## 6. Log Messages References
 
 ### The Source: Logging Statements
 
-Applications generate logs that users see during installation, operation, and troubleshooting. These can become diagnostic documentation.
+Applications generate logs that operators and users see during installation, operation, and troubleshooting. Structured logging metadata turns these into diagnostic documentation.
 
 **What developers write** (structured logging):
 
@@ -484,28 +587,24 @@ Applications generate logs that users see during installation, operation, and tr
 public class ConnectionService {
     
     /**
-     * @logLevel ERROR
-     * @meaning Cannot connect after all retries
-     * @userAction Immediate attention required
      * @troubleshooting
-     *   - Verify server is running
-     *   - Check connection configuration
-     *   - Verify network connectivity
+     *   - Verify the database server is running
+     *   - Check connection string in configuration
+     *   - Verify network connectivity and firewall rules
      */
     public void handleConnectionFailed() {
         log.error("CONN-001: Failed to connect after {} attempts", maxRetries);
     }
     
     /**
-     * @logLevel WARN
-     * @meaning Connection pool running low
-     * @userAction Monitor; may indicate performance issues
      * @troubleshooting
-     *   - Check for connection leaks
-     *   - Consider increasing pool size
+     *   - Check for connection leaks in application code
+     *   - Consider increasing pool size in configuration
+     *   - Review long-running queries
      */
     public void handlePoolLow() {
-        log.warn("CONN-002: Connection pool low. {} available", available);
+        log.warn("CONN-002: Connection pool low. {} of {} available",
+                 available, total);
     }
 }
 ```
@@ -517,41 +616,42 @@ public class ConnectionService {
 
 ## CONN-001: Failed to connect
 
-```
-ERROR: CONN-001: Failed to connect after 5 attempts
-```
+**Level**: ERROR  
+**Example**: `CONN-001: Failed to connect after 5 attempts`
 
-**Meaning**: Cannot reach the server after multiple retries.
+**What it means**: The application cannot reach the database after multiple retries.
 
-**Action**: Immediate attention needed.
-- Verify server is running
-- Check connection configuration
-- Verify network connectivity
+**Action required**: Immediate attention needed.
+
+1. Verify the database server is running
+2. Check connection string in configuration
+3. Verify network connectivity and firewall rules
 
 ---
 
 ## CONN-002: Connection pool low
 
-```
-WARN: CONN-002: Connection pool low. 2 available
-```
+**Level**: WARN  
+**Example**: `CONN-002: Connection pool low. 2 of 20 available`
 
-**Meaning**: Most connections are in use.
+**What it means**: Most database connections are in use.
 
-**Action**: Monitor and investigate if persistent.
-- Check for connection leaks
-- Consider increasing pool size
+**Action required**: Monitor and investigate if persistent.
+
+1. Check for connection leaks in application code
+2. Consider increasing pool size in configuration
+3. Review long-running queries
 ```
 
 ---
 
-## 6. Release Notes from Commits
+## 7. Release Notes from Commits
 
 ### The Source: Conventional Commits
 
-When developers write commits in a standard format, release notes write themselves.
+When developers write commits in a standard format, release notes write themselves. This is the most mature Code-to-Doc pipeline — tools like **release-please** and **semantic-release** handle it end to end.
 
-**What developers write** (for clear history):
+**What developers write** (following Conventional Commits):
 
 ```bash
 # Feature
@@ -580,88 +680,40 @@ Migration: Add Authorization header to all API requests.
 See docs/migration/v3-auth.md for details.
 
 Closes #789"
-
-# Performance improvement
-git commit -m "perf(search): add caching for project listings
-
-Reduces average response time from 800ms to 120ms for the
-project list endpoint by caching results for 5 minutes.
-
-Closes #321"
 ```
 
 **What this generates** (via release-please):
 
 ```markdown
-# Release Notes
+# Release Notes — v3.2.0 (January 30, 2026)
 
-## Version 3.2.0 (January 30, 2026)
+## New Features
 
-### New Features
+- **Project Templates** — Select from pre-built templates (Agile, Kanban,
+  Bug Tracking) when creating a project. (#234)
 
-#### Project Templates
-You can now select from pre-built templates when creating a project,
-getting you started faster with best-practice configurations.
+## Bug Fixes
 
-**Available templates:**
-- **Agile**: Sprint-based workflow with story points
-- **Kanban**: Visual board with WIP limits  
-- **Bug Tracking**: Issue triage and resolution workflow
+- **Notifications** — Fixed duplicate emails on rapid status changes. (#456)
 
-[Learn more: Using Project Templates](#)
+## Breaking Changes
 
----
-
-### Improvements
-
-#### Faster Project Listings
-Project list pages now load 6x faster thanks to caching improvements.
-
----
-
-### Bug Fixes
-
-- **Notifications**: Fixed an issue where duplicate emails could be
-  sent when status changes happened rapidly.
-
----
-
-### Breaking Changes
-
-#### Authentication Required for All API Endpoints
-
-All API endpoints now require authentication. Previously, some read-only
-endpoints were publicly accessible.
-
-**Who is affected**: Users making API calls without authentication.
-
-**What to do**: 
-1. Obtain an API key from Settings > API Keys
-2. Add the `Authorization: Bearer <your-token>` header to all requests
-
-**Migration guide**: [Upgrading to v3.2 Authentication](/docs/migration/v3-auth)
-
----
-
-## Version 3.1.2 (January 22, 2026)
-
-### Bug Fixes
-
-- **Export**: Fixed CSV exports failing for projects with special
-  characters in names.
-- **UI**: Corrected alignment of action buttons on mobile devices.
+- **API Authentication** — All endpoints now require authentication.
+  Previously, some read-only endpoints were public.  
+  **Migration**: Add `Authorization: Bearer <token>` header to all requests.
+  See [Upgrading to v3.2](/docs/migration/v3-auth). (#789)
 ```
 
 ### Setting Up Automated Release Notes
 
-**1. Install commitlint** (enforces format):
+**1. Enforce commit format with commitlint:**
 
 ```bash
 npm install -g @commitlint/cli @commitlint/config-conventional
 echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
 ```
 
-**2. Set up release-please** (`.github/workflows/release-please.yml`):
+**2. Add a release-please GitHub Action** (`.github/workflows/release-please.yml`):
 
 ```yaml
 name: Release Please
@@ -678,18 +730,18 @@ jobs:
           release-type: node
 ```
 
-**3. Customize changelog sections** (`release-please-config.json`):
+**3. Customise changelog sections** (`release-please-config.json`):
 
 ```json
 {
   "packages": {
     ".": {
       "changelog-sections": [
-        {"type": "feat", "section": "New Features"},
-        {"type": "fix", "section": "Bug Fixes"},
-        {"type": "perf", "section": "Improvements"},
-        {"type": "docs", "hidden": true},
-        {"type": "chore", "hidden": true}
+        { "type": "feat", "section": "New Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "perf", "section": "Performance Improvements" },
+        { "type": "docs", "hidden": true },
+        { "type": "chore", "hidden": true }
       ]
     }
   }
@@ -698,130 +750,134 @@ jobs:
 
 ---
 
-## 7. Setup Guides from Configuration
+## 8. CLI Reference from Command Definitions
 
-### The Source: Configuration Files
+### The Source: CLI Framework Help Text
 
-Configuration files with structured comments become setup documentation automatically.
+Modern CLI frameworks (Click, Cobra, argparse, picocli, oclif) already require developers to write help strings for every command and option. This is a ready-made source for CLI reference documentation.
 
-**What developers write** (in `config.example.yaml`):
+**What developers write** (Python Click example):
 
-```yaml
-# =============================================================================
-# FEATURE FLAGS
-# =============================================================================
+```python
+@cli.group()
+def artifacts():
+    """Manage artifacts in repositories.
+    
+    Commands for searching, downloading, uploading,
+    and deleting artifacts across all accessible repositories.
+    """
+    pass
 
-features:
-  # Enable dark mode theme option for users
-  # Type: boolean
-  # Default: true
-  # Environment: FEATURES_DARK_MODE
-  dark_mode: true
-  
-  # Enable export to PDF feature
-  # Type: boolean
-  # Default: false
-  # Note: Requires wkhtmltopdf installed on server
-  # Environment: FEATURES_PDF_EXPORT
-  pdf_export: false
-  
-  # Maximum file upload size
-  # Type: size
-  # Default: 10MB
-  # Range: 1MB - 100MB
-  # Environment: FEATURES_MAX_UPLOAD_SIZE
-  max_upload_size: 10MB
+@artifacts.command()
+@click.argument('query', required=True)
+@click.option('--repo', '-r', default=None,
+              help='Limit search to a specific repository.')
+@click.option('--format', '-f',
+              type=click.Choice(['table', 'json', 'csv']),
+              default='table',
+              help='Output format for results.')
+@click.option('--limit', '-l', type=int, default=50,
+              help='Maximum number of results to return (1–1000).')
+def search(query, repo, format, limit):
+    """Search for artifacts matching a query pattern.
+    
+    Supports wildcards (*) and regular expressions.
+    
+    Examples:\n
+        myctl artifacts search "libs-release/*.jar"\n
+        myctl artifacts search --repo docker-local --format json "nginx*"\n
+        myctl artifacts search --limit 10 "*.tgz"
+    """
+    pass
+```
 
-# =============================================================================
-# RATE LIMITING
-# =============================================================================
+**What developers write** (Go Cobra example):
 
-rate_limiting:
-  # Maximum API requests per minute per user
-  # Type: integer
-  # Default: 100
-  # Range: 10-1000
-  # Environment: RATE_LIMIT_REQUESTS_PER_MINUTE
-  requests_per_minute: 100
-  
-  # Action when limit exceeded
-  # Type: enum
-  # Values: block, throttle, log_only
-  # Default: throttle
-  # Environment: RATE_LIMIT_ACTION
-  action: throttle
+```go
+var searchCmd = &cobra.Command{
+    Use:   "search [query]",
+    Short: "Search for artifacts matching a query pattern",
+    Long: `Search for artifacts across all accessible repositories.
+Supports wildcards (*) and regular expressions.`,
+    Example: `  myctl artifacts search "libs-release/*.jar"
+  myctl artifacts search --repo docker-local --format json "nginx*"
+  myctl artifacts search --limit 10 "*.tgz"`,
+    Args: cobra.ExactArgs(1),
+    RunE: runSearch,
+}
+
+func init() {
+    searchCmd.Flags().StringVarP(&repo, "repo", "r", "",
+        "Limit search to a specific repository")
+    searchCmd.Flags().StringVarP(&format, "format", "f", "table",
+        "Output format: table, json, csv")
+    searchCmd.Flags().IntVarP(&limit, "limit", "l", 50,
+        "Maximum results to return (1-1000)")
+}
 ```
 
 **What this generates** (for end users):
 
 ```markdown
-# Configuration Reference
+# CLI Reference
 
-## Feature Flags
+## myctl artifacts search
 
-### dark_mode
-Enable dark mode theme option for users.
+Search for artifacts matching a query pattern.
 
-| Property | Value |
-|----------|-------|
-| Default | `true` |
-| Environment variable | `FEATURES_DARK_MODE` |
+Supports wildcards (`*`) and regular expressions.
 
-### pdf_export
-Enable export to PDF feature.
+### Usage
 
-| Property | Value |
-|----------|-------|
-| Default | `false` |
-| Requirement | wkhtmltopdf must be installed |
-| Environment variable | `FEATURES_PDF_EXPORT` |
+    myctl artifacts search [OPTIONS] QUERY
 
-### max_upload_size
-Maximum file upload size allowed.
+### Arguments
 
-| Property | Value |
-|----------|-------|
-| Default | `10MB` |
-| Range | `1MB` - `100MB` |
-| Environment variable | `FEATURES_MAX_UPLOAD_SIZE` |
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `QUERY` | Yes | Search pattern (supports wildcards and regex) |
+
+### Options
+
+| Option | Short | Default | Description |
+|--------|-------|---------|-------------|
+| `--repo` | `-r` | *(all)* | Limit search to a specific repository |
+| `--format` | `-f` | `table` | Output format: `table`, `json`, `csv` |
+| `--limit` | `-l` | `50` | Maximum results to return (1–1000) |
+
+### Examples
+
+    # Search for all JAR files in libs-release
+    myctl artifacts search "libs-release/*.jar"
+
+    # Search in a specific repo, output as JSON
+    myctl artifacts search --repo docker-local --format json "nginx*"
+
+    # Return only the first 10 results
+    myctl artifacts search --limit 10 "*.tgz"
+```
+
+### CLI Documentation Standard
+
+Most CLI frameworks generate `--help` output automatically. To go further:
+
+1. **Always write a `Long` description** — not just `Short` / `summary`.
+2. **Include `Example` blocks** with realistic, copy-pasteable commands.
+3. **Use consistent flag naming** (`--format`, `--output`, `--verbose`) across all commands.
+4. **Export help as structured data** — many frameworks support JSON or man-page output that can be parsed into docs.
+
+> **Tooling**: Cobra has `doc.GenMarkdownTree()`, Click has `click-man` and `sphinx-click`, oclif generates docs natively. These produce a complete CLI reference site from your command definitions.
 
 ---
 
-## Rate Limiting
 
-### requests_per_minute
-Maximum API requests allowed per minute per user.
+| Approach | Effort | Best For |
+|----------|--------|----------|
+| **Off-the-shelf tools** (Swagger, Redoc, release-please, Cobra doc gen) | Medium | OpenAPI, release notes, CLI reference |
+| **Custom scripts** (regex / AST parsers in CI) | High | Test annotations, error enums, config comments |
+| **LLM-assisted extraction** (GPT / Claude in a CI step) | High | READMEs, tests, log messages, annotations, comments |
 
-| Property | Value |
-|----------|-------|
-| Default | `100` |
-| Range | `10` - `1000` |
-| Environment variable | `RATE_LIMIT_REQUESTS_PER_MINUTE` |
-
-### action
-What happens when rate limit is exceeded.
-
-| Value | Behavior |
-|-------|----------|
-| `block` | Request is rejected with 429 error |
-| `throttle` | Request is delayed and retried |
-| `log_only` | Request proceeds, violation logged |
-```
-
-### Configuration Comment Standard
-
-To enable doc extraction, use consistent comment structure:
-
-```yaml
-# Description of what this setting does
-# Type: string/integer/boolean/enum/size
-# Default: default-value
-# Range: min-max (for numbers)
-# Values: option1, option2 (for enums)
-# Required: Yes/No
-# Environment: ENV_VAR_NAME
-setting_name: value
-```
+The key insight: **you don't need to build everything at once.** Start with the off-the-shelf tools (release notes, API reference, CLI docs), then add custom extractors as the value becomes clear.
 
 ---
 
@@ -829,37 +885,51 @@ setting_name: value
 
 The most important aspect of Code-to-Doc is philosophical, not technical.
 
-### The Wrong Approach
+### The Wrong Pitch
 
-```
-"Follow these standards so we can generate documentation."
+> *"Follow these standards so we can generate documentation."*
 
-Problems:
-- Developers don't care about documentation
+This fails because:
+- Developers don't see documentation as their problem
 - Standards feel like bureaucratic overhead
-- Compliance is minimal
-```
+- Compliance is minimal and grudging
 
-### The Right Approach
+### The Right Pitch
 
-```
-"Follow these industry standards for better code quality.
-As a by-product, documentation can be automated."
+> *"Follow these industry standards for better code quality, faster onboarding, and easier debugging. As a by-product, customer technical documentation can be automated."*
 
-Benefits:
+This works because:
 - Developers care about code quality
-- Standards have intrinsic value
-- Documentation accuracy is automatic
-```
+- Every standard has intrinsic engineering value
+- Documentation accuracy becomes automatic
 
 ### Value for Each Audience
 
 | Audience | Primary Benefit | Documentation Benefit |
 |----------|-----------------|----------------------|
-| **Developers** | Better code, less grunt work | No doc writing |
+| **Developers** | Better code, less grunt work | No manual doc writing |
 | **Tech Writers** | Focus on high-value content | Accuracy guaranteed |
-| **End Users** | Always-accurate docs | Better experience |
-| **Leadership** | Faster releases | Lower doc costs |
+| **End Users** | Always-accurate docs | Better product experience |
+| **Leadership** | Faster releases | Lower documentation costs |
+
+---
+
+## Value add by writers
+
+Code-to-Doc is powerful, but it doesn't replace all documentation. Some content requires human judgement, empathy, and experience that can't be extracted from code.
+
+| Documentation Type | Why It Needs a Human |
+|-------------------|---------------------|
+| Information Architecture & UX | Organizing automated snippets into a logical, searchable hierarchy that matches user mental models. |
+| Pipeline Curation & Maintenance | Auditing automated output for clarity and ensuring the "extraction glue" evolves alongside the product. |
+| **Getting-started tutorials** | Require a curated learning journey with a specific narrative arc |
+| **Conceptual "why" explanations** | Code tells you *what* and *how* — writers explain *why* and *when* |
+| **Best practices & patterns** | Come from experience, not from code structure |
+| **Architecture decision records** | Capture trade-offs and context that code doesn't encode |
+| **Video & visual content** | Walkthroughs, diagrams, and demos need creative work |
+| **Use-case & solution guides** | Combine multiple features into a real-world scenario |
+
+> **The sweet spot**: Code-to-Doc handles the *reference* and *procedural* documentation (what and how); writers handle the *conceptual* and *tutorial* content (why and learning journeys). This aligns with the [Diátaxis documentation framework](https://diataxis.fr/), which categorises docs into Tutorials, How-To Guides, Reference, and Explanation.
 
 ---
 
@@ -868,61 +938,51 @@ Benefits:
 ### Quick Wins (Start Here)
 
 1. **Adopt Conventional Commits** → Automated release notes
-   ```bash
-   npm install -g @commitlint/cli @commitlint/config-conventional
-   ```
+
+```bash
+npm install -g @commitlint/cli @commitlint/config-conventional
+```
 
 2. **Document your OpenAPI specs** → API reference
-   - Add `description` to endpoints
-   - Add `example` to parameters
 
-3. **Add JSDoc to E2E tests** → How-to guides
-   ```typescript
-   /**
-    * @scenario What user accomplishes
-    * @steps 1. First step 2. Second step
-    */
-   ```
+   - Add `description` and `example` to every endpoint, parameter, and response
 
-### What Can Be Automated
+3. **Generate CLI docs from your framework** → CLI reference
 
-| Documentation Type | Source | Effort to Enable |
-|-------------------|--------|------------------|
-| Release notes | Commit messages | Low - adopt format |
-| API reference | OpenAPI specs | Low - add descriptions |
-| How-to guides | E2E tests | Medium - add JSDoc |
-| Troubleshooting | Error handling | Medium - structure errors |
-| Setup guides | Config files | Low - add comments |
-| Concepts | README files | Low - structure content |
+   - Cobra: `doc.GenMarkdownTree()`
+   - Click: `sphinx-click` or `click-man`
+   - oclif: built-in doc generation
 
-### What Still Needs Humans
+4. **Add JSDoc annotations to E2E tests** → How-to guides
 
-- Getting started tutorials (user journey)
-- Conceptual explanations (why, not just what)
-- Best practices (experience-based)
-- Video content
-- Use case examples
+```typescript
+/** @scenario What user accomplishes  @steps 1. ... 2. ... */
+```
+
+5. **Structure your error / log enums** → Troubleshooting reference
+
+   - Add `@userMessage` and `@troubleshooting` to every error code
 
 ---
 
 ## Conclusion
 
-Documentation drifts when it's separate from code. Code-to-Doc makes code the source of truth for user documentation.
+Documentation drifts when it's separate from code. Code-to-Doc makes the codebase the single source of truth for user documentation.
 
 ### Key Principles
 
-1. **Standards first**: Adopt coding standards for quality; docs follow
-2. **Extract, don't duplicate**: Information exists once (in code)
-3. **Focus on users**: Generate docs end users actually need
-4. **By-product mindset**: Good docs result from good code
+1. **Standards first** — Adopt coding standards for quality; docs follow as a by-product
+2. **Extract, don't duplicate** — Information exists once, in the code
+3. **Automate the reference layer** — Let humans focus on tutorials and conceptual content
+4. **Start small** — Commit format and OpenAPI descriptions are day-one wins
 
 ### The Result
 
-- **Release notes** that write themselves
-- **API docs** that can't be wrong
-- **How-to guides** that match the actual UI
-- **Troubleshooting guides** with real solutions
-- **Setup docs** that reflect real configuration
+- **Release notes** that write themselves from conventional commits
+- **API docs** that can't be wrong because they come from the spec
+- **CLI reference** generated directly from command definitions
+- **How-to guides** that match the actual UI because they come from tests
+- **Troubleshooting reference** built from real error codes, resolutions, and logs
 
 ---
 
@@ -932,9 +992,16 @@ Documentation drifts when it's separate from code. Code-to-Doc makes code the so
 
 ## Further Reading
 
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
 - [Google Coding Style Guides](https://google.github.io/styleguide/)
-- [release-please](https://github.com/googleapis/release-please)
-- [Cypress](https://docs.cypress.io/app/get-started/why-cypress)
+- [Conventional Commits](https://www.conventionalcommits.org/) — Commit message standard
+- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html) — REST API description format
+- [release-please](https://github.com/googleapis/release-please) — Automated release notes from commits
+- [Diátaxis Framework](https://diataxis.fr/) — A systematic approach to documentation authoring
+- [Swagger UI](https://swagger.io/tools/swagger-ui/) - OpenAPI-powered API reference docs
+- [Redoc](https://github.com/Redocly/redoc) — OpenAPI-powered API reference docs
+- [Cobra Doc Generation](https://pkg.go.dev/github.com/spf13/cobra/doc) — CLI docs from Go Cobra
+- [sphinx-click](https://sphinx-click.readthedocs.io/) — CLI docs from Python Click
+- [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices) — E2E testing patterns
+
+---
 
