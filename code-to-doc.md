@@ -872,17 +872,6 @@ Most CLI frameworks generate `--help` output automatically. To go further:
 
 ---
 
-
-| Approach | Effort | Best For |
-|----------|--------|----------|
-| **Off-the-shelf tools** (Swagger, Redoc, release-please, Cobra doc gen) | Medium | OpenAPI, release notes, CLI reference |
-| **Custom scripts** (regex / AST parsers in CI) | High | Test annotations, error enums, config comments |
-| **LLM-assisted extraction** (GPT / Claude in a CI step) | High | READMEs, tests, log messages, annotations, comments |
-
-The key insight: **you don't need to build everything at once.** Start with the off-the-shelf tools (release notes, API reference, CLI docs), then add custom extractors as the value becomes clear.
-
----
-
 ## The By-Product Mindset
 
 The most important aspect of Code-to-Doc is philosophical, not technical.
@@ -905,6 +894,10 @@ This works because:
 - Every standard has intrinsic engineering value
 - Documentation accuracy becomes automatic
 
+---
+
+## Value add by writers
+
 ### Value for Each Audience
 
 | Audience | Primary Benefit | Documentation Benefit |
@@ -913,10 +906,6 @@ This works because:
 | **Tech Writers** | Focus on high-value content | Accuracy guaranteed |
 | **End Users** | Always-accurate docs | Better product experience |
 | **Leadership** | Faster releases | Lower documentation costs |
-
----
-
-## Value add by writers
 
 Code-to-Doc is powerful, but it doesn't replace all documentation. Some content requires human judgement, empathy, and experience that can't be extracted from code.
 
@@ -936,6 +925,14 @@ Code-to-Doc is powerful, but it doesn't replace all documentation. Some content 
 ---
 
 ## Getting Started
+
+| Approach | Effort | Best For |
+|----------|--------|----------|
+| **Off-the-shelf tools** (Swagger, Redoc, release-please, Cobra doc gen) | Medium | OpenAPI, release notes, CLI reference |
+| **Custom scripts** (regex / AST parsers in CI) | High | Test annotations, error enums, config comments |
+| **LLM-assisted extraction** (GPT / Claude in a CI step) | High | READMEs, tests, log messages, annotations, comments |
+
+The key insight: **you don't need to build everything at once.** Start with the off-the-shelf tools (release notes, API reference, CLI docs), then add custom extractors as the value becomes clear.
 
 ### Quick Wins (Start Here)
 
