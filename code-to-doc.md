@@ -148,6 +148,13 @@ Each mapping relies on coding standards that teams already adopt for code qualit
 
 ---
 
+Quick check: if your team already has OpenAPI, tests, commits, and CLI help text, you already have the raw material for Code-to-Doc.
+
+If you’ve read this far, you’ve probably seen documentation drift firsthand.
+Now let’s move from the pain to practical, code-level solutions.
+
+---
+
 ## 1. Conceptual Documentation from READMEs
 
 ### The Source: README Files
@@ -926,6 +933,8 @@ Code-to-Doc is powerful, but it doesn't replace all documentation. Some content 
 
 ## Getting Started
 
+Read this far? Great. The next section is the practical part: what to implement first, and what can wait.
+
 | Approach | Effort | Best For |
 |----------|--------|----------|
 | **Off-the-shelf tools** (Swagger, Redoc, release-please, Cobra doc gen) | Medium | OpenAPI, release notes, CLI reference |
@@ -981,6 +990,11 @@ Documentation drifts when it's separate from code. Code-to-Doc makes the codebas
 ---
 
 *Code-to-Doc: Because the best documentation is the documentation that writes itself.*
+
+---
+
+If you read all the way to the end, you care about where technical documentation is heading.
+If you’re working on modernizing docs, I’d be happy to discuss ideas or collaborate.
 
 ---
 
