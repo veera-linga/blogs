@@ -15,6 +15,19 @@ date: "JAN-2026"
 
 ---
 
+## Scope & Expectations
+
+This blog is primarily about **customer-facing technical documentation for SaaS products** (API docs, CLI docs, how-to guides, troubleshooting, and release notes).
+
+**Code-to-Doc works best in new or evolving codebases** where teams can adopt coding standards early.
+
+In mature products, retrofitting existing code with structured annotations/comments can be difficult due to legacy patterns, migration effort, and developer adoption challenges.
+
+This is not a “one-click replacement” for technical writers. It is a methodology to automate draft/reference documentation from code, with human curation for clarity, narrative, and information architecture.
+
+---
+
+
 ### **Table of Contents**
 
 * [**The Documentation Problem**](#the-documentation-problem)
